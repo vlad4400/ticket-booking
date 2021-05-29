@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Form1Component } from './components/form1/form1.component';
-import { Form2Component } from './components/form2/form2.component';
+import { Form1Component } from './components/main/form1/form1.component';
+import { Form2Component } from './components/main/form2/form2.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 
