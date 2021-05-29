@@ -11,6 +11,8 @@ import { MainComponent } from './components/main/main.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { Form1Component } from './components/form1/form1.component';
 import { Form2Component } from './components/form2/form2.component';
+import { MiniMenuComponent } from './components/header/mini-menu/mini-menu.component';
+import { BigMenuComponent } from './components/header/big-menu/big-menu.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { Form2Component } from './components/form2/form2.component';
     MainComponent,
     FooterComponent,
     Form1Component,
-    Form2Component
+    Form2Component,
+    MiniMenuComponent,
+    BigMenuComponent
   ],
   imports: [
     BrowserModule,

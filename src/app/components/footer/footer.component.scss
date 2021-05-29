@@ -1,0 +1,44 @@
+footer {
+  background-color: tomato;
+  box-sizing: border-box;
+  padding: 10px 50px;
+
+  section {
+    display: none;
+    @media screen and (min-width: 576px) {
+      display: flex;
+    }
+
+    padding: 1px 2px;
+    margin: 5px auto;
+    font-weight: 600;
+    flex-direction: column;
+
+    * {
+      text-decoration: none;
+      padding: 5px;
+      font-size: 12px;
+      color: #333;
+    }
+
+    *:first-child {
+      font-size: 14px;
+      color: #222;
+    }
+  }
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto 30px;
+  grid-template-areas:
+    "section1 section2 section3 section4"
+    ".";
+
+  .copyright {
+    font-size: 12px;
+    padding: 5px;
+    grid-column: 1 / 5;
+    grid-row: 2;
+    text-align: center;
+  }
+}

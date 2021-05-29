@@ -1,0 +1,16 @@
+.container {
+  background-color: lightblue;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  @media screen and (min-width: 992px) {
+    width: 992px;
+  }
+
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows:
+    auto
+    1fr
+    auto;
+}

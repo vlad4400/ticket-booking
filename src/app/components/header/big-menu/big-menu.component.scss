@@ -1,0 +1,27 @@
+.big-menu {
+  display: none;
+  @media screen and (min-width: 576px) {
+    display: block;
+  }
+
+  .link {
+    padding: 12px 24px;
+    margin: 0 0 0 0;
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  * {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .list {
+    display: block;
+    margin: 2px;
+    background-color: lightseagreen;
+  }
+}
