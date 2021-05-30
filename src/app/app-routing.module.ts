@@ -13,7 +13,7 @@ const routes: Routes = [
         component: Form1Component
       },
       {
-        path: 'ticket/:from/:to',
+        path: 'ticket/:departure/:arrives/:data',
         component: Form2Component
       }
     ]

@@ -1,1 +1,22 @@
-<p>form1 works!</p>
+<form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <label class="element" for="departure">
+    Wylot
+    <select ngModel="lodz" name="departure" id="departure">
+      <option value="lodz">Łódź</option>
+      <option value="warsaw">Warszawa</option>
+    </select>
+  </label>
+  <label class="element" for="arrives">
+    Przylot
+    <select ngModel="kiev" name="arrives" id="arrives">
+      <option value="kiev">Kijów</option>
+      <option value="lodz">Lódż</option>
+      <option value="warsaw">Warszawa</option>
+    </select>
+  </label>
+  <label class="element" for="inputDate">
+    Data odlotu
+    <input name="inputDate" [min]="dateNow" [ngModel]="dateNow" id="inputDate" type="date">
+  </label>
+  <button class="btn">Dalej</button>
+</form>

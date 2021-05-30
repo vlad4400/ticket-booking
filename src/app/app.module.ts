@@ -13,6 +13,7 @@ import { Form1Component } from './components/main/form1/form1.component';
 import { Form2Component } from './components/main/form2/form2.component';
 import { MiniMenuComponent } from './components/header/mini-menu/mini-menu.component';
 import { BigMenuComponent } from './components/header/big-menu/big-menu.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BigMenuComponent } from './components/header/big-menu/big-menu.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
