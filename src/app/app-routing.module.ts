@@ -19,7 +19,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: "login",
+    path: "login/:departure/:arrives/:data/:tickets/:baggages",
     component: LoginComponent
   },
   {

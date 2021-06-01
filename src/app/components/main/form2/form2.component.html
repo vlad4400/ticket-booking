@@ -1,4 +1,35 @@
-<p>form2 works!</p>
+<p>
+  Wybierz miejsce:
+</p>
 
-<div>from: {{ ticketFrom }}</div>
-<div>to: {{ ticketTo }}</div>
+<div #airPlane class="air-plane">
+  <div class="head"></div>
+  <div #seats class="seats">
+    <div id="seat-{{el.seat}}" *ngFor="let el of plane" class="seat {{el.available ? 'available' : 'not-available'}}" (click)="pick($event)">{{el.seat}}</div>
+  </div>
+</div>
+
+<form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <label class="element" for="departure">
+    Wylot: {{departure}}
+  </label>
+  <label class="element" for="arrives">
+    Przylot: {{arrives}}
+  </label>
+  <label class="element" for="inputDate">
+    Data odlotu: {{data}}
+  </label>
+  <fieldset *ngFor="let ticket of tickets" class="element">
+    <header>Miejsce {{ticket}}</header>
+    <label for="bagaz-{{ticket}}">Typ bagażu</label>
+    <select ngModel="1" name="bagaz-{{ticket}}" id="bagaz-{{ticket}}">
+      <option value="1">Tylko torebka ręczna (< 10kg)</option>
+      <option value="2">Średnia walizka (< 20kg)</option>
+      <option value="3">Duża walizka (< 32kg)</option>
+    </select>
+  </fieldset>
+  <label class="element" *ngIf="tickets.length">Liczba biletów: {{ tickets.length }}</label>
+  <button class="{{tickets.length ? 'btn' : 'btn--inactive'}}">
+    {{tickets.length ? 'Kupić' : 'Wybierz miejsce'}}
+  </button>
+</form>
