@@ -15,9 +15,9 @@ app.get("*", (req, res) => {
 });
 
 const server = app.listen(port, () => {
-  const isLocal = process.env.PORT ? true : false;
+  const isLocal = process.env.PORT ? false : true;
 
   isLocal
-    ? console.log(`Server running on port ${port}`)
-    : console.log('Server running at', `http://localhost:${port}/`.blue);
+    ? console.log('Server running at', `http://localhost:${port}/`.blue)
+    : console.log(`Server running on port ${port}`);
 });
