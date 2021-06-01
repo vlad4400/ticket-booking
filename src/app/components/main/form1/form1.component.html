@@ -1,6 +1,7 @@
+<span id="time">{{dateNow}} {{timeNow.h}}:{{timeNow.m}}:{{timeNow.s}}</span>
 <form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
   <label class="element" for="departure">
-    Wylot <span *ngIf="cnt <= 16">({{temp}}&#8451;)</span>
+    Wylot <span *ngIf="cnt <= 16">{{ '('+temp+'&#8451;)' }}</span>
     <select (change)="onChanges()" [(ngModel)]="form.srcCountry" name="departure" id="departure">
       <option value="lodz">Łódź</option>
       <option value="warsaw">Warszawa</option>

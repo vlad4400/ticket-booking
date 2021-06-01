@@ -10,10 +10,15 @@ import { Router } from '@angular/router';
 export class Form1Component implements OnInit {
 
   dateNow !:string;
+  timeNow !:{
+    h :number,
+    m :number,
+    s :number
+  };
   temp !:number;
   form = {
     srcCountry: 'lodz',
-    selectedData: this.currentTime()
+    selectedData: this.getCurrentDate()
   }
   cnt :number = 1;
 
@@ -21,7 +26,11 @@ export class Form1Component implements OnInit {
   constructor(private route:Router) { }
 
   ngOnInit(): void {
-    this.dateNow = this.currentTime();
+    this.timeNow = this.getCurrentTime();
+    setInterval(() => {
+      this.timeNow = this.getCurrentTime();
+    });
+    this.dateNow = this.getCurrentDate();
     this.updateTemperature(this.form.srcCountry, this.cnt);
   }
 
@@ -47,13 +56,22 @@ export class Form1Component implements OnInit {
       });
   }
 
-  currentTime(){
+  getCurrentDate() {
     const today = new Date();
     const year = today.getFullYear();
     const months = today.getMonth();
     const day = today.getDate();
 
     return `${year}-${(months < 9) ? '0' : ''}${months+1}-${(day < 10) ? '0' : ''}${day}`;
+  }
+
+  getCurrentTime() {
+    const today = new Date();
+    let h = today.getHours();
+    let m = today.getMinutes();
+    let s = today.getSeconds();
+
+    return {h, m, s}
   }
 
   onChanges() {
