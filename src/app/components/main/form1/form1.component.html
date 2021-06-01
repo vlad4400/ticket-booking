@@ -1,7 +1,7 @@
 <form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
   <label class="element" for="departure">
-    Wylot
-    <select ngModel="lodz" name="departure" id="departure">
+    Wylot <span *ngIf="cnt <= 16">({{temp}}&#8451;)</span>
+    <select (change)="onChanges()" [(ngModel)]="form.srcCountry" name="departure" id="departure">
       <option value="lodz">Łódź</option>
       <option value="warsaw">Warszawa</option>
     </select>
@@ -16,7 +16,7 @@
   </label>
   <label class="element" for="inputDate">
     Data odlotu
-    <input name="inputDate" [min]="dateNow" [ngModel]="dateNow" id="inputDate" type="date">
+    <input (change)="onChanges()" name="inputDate" [min]="dateNow" [(ngModel)]="form.selectedData" id="inputDate" type="date">
   </label>
   <button class="btn">Dalej</button>
 </form>
