@@ -22,13 +22,19 @@
   <fieldset *ngFor="let ticket of tickets" class="element">
     <header>Miejsce {{ticket}}</header>
     <label for="bagaz-{{ticket}}">Typ bagażu</label>
-    <select ngModel="1" name="bagaz-{{ticket}}" id="bagaz-{{ticket}}">
+    <select class="select-box" ngModel="1" name="bagaz-{{ticket}}" id="bagaz-{{ticket}}">
       <option value="1">Tylko torebka ręczna (< 10kg)</option>
       <option value="2">Średnia walizka (< 20kg)</option>
       <option value="3">Duża walizka (< 32kg)</option>
     </select>
   </fieldset>
   <label class="element" *ngIf="tickets.length">Liczba biletów: {{ tickets.length }}</label>
+  <label *ngIf="tickets.length" for="currencies" class="element">
+    Suma: {{ fullPrice }}
+    <select (change)="onChangeCurr()" [(ngModel)]="currentNumberCurrency" name="currencies" id="currencies">
+      <option *ngFor="let el of currencies, let i = index" value="{{i}}">{{el.code}}</option>
+    </select>
+  </label>
   <button class="{{tickets.length ? 'btn' : 'btn--inactive'}}">
     {{tickets.length ? 'Kupić' : 'Wybierz miejsce'}}
   </button>
