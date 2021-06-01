@@ -24,7 +24,7 @@ export class Form1Component implements OnInit {
     const months = today.getMonth();
     const day = today.getDate();
 
-    return `${year}-0${months+1}-${day}`;
+    return `${year}-${(months < 9) ? '0' : ''}${months+1}-${(day < 10) ? '0' : ''}${day}`;
   }
 
   onSubmit({value: { departure, arrives, inputDate }} :NgForm) {
