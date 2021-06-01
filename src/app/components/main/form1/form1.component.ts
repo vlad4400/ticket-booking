@@ -49,7 +49,8 @@ export class Form1Component implements OnInit {
 
   updateTemperature(currentCity :string, cnt :number) {
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&cnt=${cnt}&units=metric&appid=6c6951e0b5b7141a02703029688c5344`)
+    // weather => forecast/daily  //for correct work
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&id=524901&cnt=${cnt}&units=metric&appid=6c6951e0b5b7141a02703029688c5344`)
       .then( resp => resp.json())
       .then( data => {
           this.temp = data.main.temp;
