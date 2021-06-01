@@ -1,4 +1,4 @@
-<span id="time">{{dateNow}} {{timeNow.h}}:{{timeNow.m}}:{{timeNow.s}}</span>
+<span id="time">{{dateNow}} {{(timeNow.h < 10 ? '0' : '') + timeNow.h}}:{{(timeNow.m < 10 ? '0' : '') + timeNow.m}}:{{(timeNow.s < 10 ? '0' : '') + timeNow.s}}</span>
 <form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
   <label class="element" for="departure">
     Wylot <span *ngIf="cnt <= 16">{{ '('+temp+'&#8451;)' }}</span>

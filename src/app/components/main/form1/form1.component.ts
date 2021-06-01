@@ -29,7 +29,7 @@ export class Form1Component implements OnInit {
     this.timeNow = this.getCurrentTime();
     setInterval(() => {
       this.timeNow = this.getCurrentTime();
-    });
+    }, 500);
     this.dateNow = this.getCurrentDate();
     this.updateTemperature(this.form.srcCountry, this.cnt);
   }
