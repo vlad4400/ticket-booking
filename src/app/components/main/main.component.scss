@@ -1,5 +1,7 @@
 * {
-  background-color: tan;
   box-sizing: border-box;
-  padding: 10px 50px;
+  padding: 5px;
+  @media screen and (min-width: 576px) {
+    padding: 10px 50px;
+  }
 }
