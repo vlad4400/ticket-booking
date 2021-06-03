@@ -30,19 +30,6 @@ export class Form2Component implements OnInit {
     }
   }
   tickets :number[] = [];
-  currencies :{
-    code :string,
-    currency :string,
-    mid :number
-  }[] = [{
-      code: 'PLN',
-      currency: 'złoty (Poland)',
-      mid: 1
-  }];
-  fullPrice = 0;
-  biletPricePLN !:number;
-  currentNumberCurrency = 0;
-
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -56,15 +43,12 @@ export class Form2Component implements OnInit {
         switch (this.arrives) {
           case 'kiev':
             this.planeType = 3;
-            this.biletPricePLN = 120;
             break;
           case 'krakow':
             this.planeType = 1;
-            this.biletPricePLN = 75;
             break;
           case 'odessa':
             this.planeType = 2;
-            this.biletPricePLN = 130;
             break;
 
           default:
@@ -75,15 +59,12 @@ export class Form2Component implements OnInit {
         switch (this.arrives) {
           case 'kiev':
             this.planeType = 2;
-            this.biletPricePLN = 110;
             break;
           case 'krakow':
             this.planeType = 1;
-            this.biletPricePLN = 70;
             break;
           case 'odessa':
             this.planeType = 3;
-            this.biletPricePLN = 140;
             break;
 
           default:
@@ -101,17 +82,8 @@ export class Form2Component implements OnInit {
           available: !Math.floor(Math.random() * 2)   // to get boolean type: 50% - true, 50% - false;
       });
     }
-    this.setExchangeRate();
   }
 
-  setExchangeRate() {
-    fetch('http://api.nbp.pl/api/exchangerates/tables/a/?format=json')
-      .then(data => data.json())
-      .then(([{rates: array}]) => array.map((el :any, idx :number) => {
-          this.currencies.push(el);
-      }))
-      .catch(err => console.log(err));
-  }
 
   pick(event :any) {
     let e = event.srcElement.attributes.class.value;
@@ -133,26 +105,14 @@ export class Form2Component implements OnInit {
       this.renderer.addClass(event.target, 'available');
     }
 
-    this.fullPrice = Math.floor(this.biletPricePLN * this.tickets.length / this.currencies[this.currentNumberCurrency].mid);
-  }
-
-  onChangeCurr() {
-    this.fullPrice = Math.floor(this.biletPricePLN * this.tickets.length / this.currencies[this.currentNumberCurrency].mid);
   }
 
   onSubmit(f: NgForm) {
 
     if (this.tickets.length) {
-      let baggages :string[] = [];
-
-      baggages = this.tickets.map(value=>{
-        return f.value['bagaz-' + value]
-      });
-
       let ticketsStr = this.tickets.join('-');
-      let baggagesStr = baggages.join('-');
 
-      this.route.navigate([`/login/${this.departure}/${this.arrives}/${this.data}/${ticketsStr}/${baggagesStr}`]);
+      this.route.navigate([`/ticket/${this.departure}/${this.arrives}/${this.data}/${ticketsStr}`]);
     }
   }
 

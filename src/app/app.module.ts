@@ -15,6 +15,7 @@ import { MiniMenuComponent } from './components/header/mini-menu/mini-menu.compo
 import { BigMenuComponent } from './components/header/big-menu/big-menu.component';
 import { FormsModule } from '@angular/forms';
 import { FormLoginComponent } from './components/main/form-login/form-login.component';
+import { Form3Component } from './components/main/form3/form3.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FormLoginComponent } from './components/main/form-login/form-login.comp
     Form2Component,
     MiniMenuComponent,
     BigMenuComponent,
-    FormLoginComponent
+    FormLoginComponent,
+    Form3Component
   ],
   imports: [
     BrowserModule,
