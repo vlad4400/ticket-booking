@@ -10,9 +10,14 @@ import { LoginRegistrComponent } from './pages/login-registr/login-registr.compo
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     component: HomeComponent,
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'ticket'
+      },
       {
         path: 'ticket',
         component: Form1Component
@@ -28,15 +33,15 @@ const routes: Routes = [
     ]
   },
   {
-    path: "",
+    path: '',
     component: LoginRegistrComponent,
     children: [
       {
-        path: "login",
+        path: 'login',
         component: FormLoginComponent
       },
       {
-        path: "registr",
+        path: 'registr',
         component: FormRegistrComponent
       }
     ]
