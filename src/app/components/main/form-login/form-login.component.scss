@@ -3,7 +3,7 @@
   flex-direction: column;
   max-width: 400px;
   margin: 20px auto;
-  padding: 50px;
+  padding: 20px 50px;
   box-sizing: border-box;
   background-color: whitesmoke;
   box-shadow: -2px 40px 34px -24px rgba(0, 0, 0, 0.2);
@@ -17,25 +17,34 @@
   //   margin: 10px 0px;
   //   padding: 0 10px;
   // }
+  label {
+    margin-top: 20px;
+  }
   input {
     width: 100%;
-    margin-bottom: 25px;
+    font-size: 14px;
+    box-sizing: border-box;
+    padding: 0 10px;
     border: 2px solid transparent;
-    // padding: 0 15px;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
     border-radius: 2px;
     font-family: inherit;
     min-height: 50px;
     transition: all 150ms ease-in-out 0s;
-  }
-  input:focus {
     outline: none;
-    border-color: #4c9cef;
     border-width: 2px;
   }
-  .btn {
+  input:focus {
+    border-color: #4c9cef;
+  }
+  input.invalid {
+    border-color: red;
+  }
+  button {
+    margin-top: 35px;
+  }
+  .btn--active {
     display: block;
-    margin: 0 auto;
     border: 3px solid #000000;
     background-color: transparent;
     padding: 20px 60px;
@@ -61,7 +70,6 @@
   .btn--inactive {
     text-align: center;
     display: block;
-    margin: 0 auto;
     border: 3px solid #000000;
     // background-color: transparent;
     background-color: lightslategray;
@@ -75,5 +83,9 @@
     font-size: 17px;
     font-family: inherit;
     transition: all 150ms ease-in-out 0s;
+  }
+  .text-link {
+    margin: 20px 0 0 0;
+    text-align: center;
   }
 }
