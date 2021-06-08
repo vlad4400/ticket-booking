@@ -3,6 +3,7 @@
   (ngSubmit)="onSubmit()"
   [formGroup]="form"
 >
+<p>Log in</p>
   <label for="login">
     Login
     <input
@@ -47,7 +48,7 @@
   <button
     type="submit"
     ngClass="{{form.invalid ? 'btn--inactive' : 'btn--active'}}"
-    [disabled]="form.invalid"
+    [disabled]="form.invalid || form.disabled"
   >
     Zaloguj się
   </button>

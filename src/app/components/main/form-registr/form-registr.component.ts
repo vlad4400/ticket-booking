@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-form-registr',
@@ -10,7 +12,10 @@ export class FormRegistrComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor() { }
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -20,7 +25,22 @@ export class FormRegistrComponent implements OnInit {
   }
 
   onSubmit() {
-    alert('Projekt w fazie rozwoju');
+    this.form.disable();
+
+    this.auth.register(this.form.value).subscribe(
+      () => {
+        console.log('Register success');
+        this.router.navigate(['/login'], {
+          queryParams: {
+            registred: true
+          }
+        });
+      },
+      err => {
+        console.warn(err);
+        this.form.enable();
+      }
+    );
   }
 
 }
