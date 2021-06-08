@@ -1,12 +1,13 @@
-<nav class="mini-menu">
+<nav priority class="mini-menu menu">
   <input id="menu__toggle" type="checkbox" />
   <label class="menu__btn" for="menu__toggle">
     <span></span>
   </label>
-  <ul class="menu__box" id="menu-list" #menuList>
-    <li><a class="menu__item" href="#">Kontakt</a></li>
-    <li><a class="menu__item" href="#">Informacje</a></li>
-    <li><a class="menu__item" href="#">Logowanie</a></li>
-    <li><a class="menu__item" href="#">Wybór języka</a></li>
+  <ul priority class="menu__box" id="menu-list" #menuList>
+    <li routerLinkActive="active"><a class="menu__item" routerLink="ticket">Bilety</a></li>
+    <li routerLinkActive="active"><a class="menu__item">Kontakt</a></li>
+    <li routerLinkActive="active"><a class="menu__item">Informacje</a></li>
+    <li routerLinkActive="active"><a class="menu__item" routerLink="login">Logowanie</a></li>
+    <li routerLinkActive="active"><a class="menu__item">Wybór języka</a></li>
   </ul>
 </nav>

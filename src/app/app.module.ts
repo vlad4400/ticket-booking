@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
 import { ContainerComponent } from './components/container/container.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
@@ -16,12 +15,13 @@ import { BigMenuComponent } from './components/header/big-menu/big-menu.componen
 import { FormsModule } from '@angular/forms';
 import { FormLoginComponent } from './components/main/form-login/form-login.component';
 import { Form3Component } from './components/main/form3/form3.component';
+import { LoginRegistrComponent } from './pages/login-registr/login-registr.component';
+import { FormRegistrComponent } from './components/main/form-registr/form-registr.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
     ContainerComponent,
     HeaderComponent,
     MainComponent,
@@ -31,7 +31,9 @@ import { Form3Component } from './components/main/form3/form3.component';
     MiniMenuComponent,
     BigMenuComponent,
     FormLoginComponent,
-    Form3Component
+    Form3Component,
+    LoginRegistrComponent,
+    FormRegistrComponent
   ],
   imports: [
     BrowserModule,
