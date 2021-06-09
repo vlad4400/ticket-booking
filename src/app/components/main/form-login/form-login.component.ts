@@ -28,9 +28,11 @@ export class FormLoginComponent implements OnInit {
 
     this.route.queryParams.subscribe((params: Params) => {
       if (params['registered']) {
-        // You can log in to the system using youself data
+        // messageBox: You can log in to the system using youself data
       } else if (params['accessDenied']) {
-        // First log in to the system
+        // messageBox: First, log in to the system
+      } else if (params['sessionExpired']) {
+        // messageBox: Please login again
       }
     });
   }
