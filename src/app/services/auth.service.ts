@@ -10,7 +10,7 @@ import { User } from './interfaces';
 })
 export class AuthService {
 
-  private token: string | null = null;
+  private token: string = '';
 
   constructor (private http: HttpClient) { }
 
@@ -28,11 +28,11 @@ export class AuthService {
     return this.http.post<User>('/api/auth/registr', user);
   }
 
-  setToken(token: string | null) {
+  setToken(token: string) {
     this.token = token;
   }
 
-  getToke(): string | null {
+  getToken(): string {
     return this.token;
   }
 
@@ -41,7 +41,7 @@ export class AuthService {
   }
 
   logout() {
-    this.setToken(null);
+    this.setToken('');
     localStorage.clear();
   }
 }
