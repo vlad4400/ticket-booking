@@ -18,6 +18,7 @@ import { FormLoginComponent } from './components/main/form-login/form-login.comp
 import { Form3Component } from './components/main/form3/form3.component';
 import { LoginRegistrComponent } from './pages/login-registr/login-registr.component';
 import { FormRegistrComponent } from './components/main/form-registr/form-registr.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FormRegistrComponent } from './components/main/form-registr/form-regist
     FormLoginComponent,
     Form3Component,
     LoginRegistrComponent,
-    FormRegistrComponent
+    FormRegistrComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
