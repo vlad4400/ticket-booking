@@ -11,7 +11,7 @@ export class Form2Component implements OnInit {
 
   departure: string = this.activatedRoute.snapshot.params['departure'];
   arrives: string = this.activatedRoute.snapshot.params['arrives'];
-  data: string = this.activatedRoute.snapshot.params['data'];
+  date: string = this.activatedRoute.snapshot.params['date'];
 
   plane :{
     seat :number,
@@ -112,7 +112,7 @@ export class Form2Component implements OnInit {
     if (this.tickets.length) {
       let ticketsStr = this.tickets.join('-');
 
-      this.route.navigate([`/ticket/${this.departure}/${this.arrives}/${this.data}/${ticketsStr}`]);
+      this.route.navigate([`/ticket/${this.departure}/${this.arrives}/${this.date}/${ticketsStr}`]);
     }
   }
 

@@ -18,8 +18,10 @@ import { FormLoginComponent } from './components/main/form-login/form-login.comp
 import { Form3Component } from './components/main/form3/form3.component';
 import { LoginRegistrComponent } from './pages/login-registr/login-registr.component';
 import { FormRegistrComponent } from './components/main/form-registr/form-registr.component';
-import { OrdersComponent } from './pages/orders/orders.component';
 import { TokenInterceptor } from './classes/token-interceptor';
+import { FormMakeOrderComponent } from './components/main/form-make-order/form-make-order.component';
+import { PageOrdersComponent } from './pages/page-orders/page-orders.component';
+import { OrdersComponent } from './components/main/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { TokenInterceptor } from './classes/token-interceptor';
     Form3Component,
     LoginRegistrComponent,
     FormRegistrComponent,
-    OrdersComponent
+    OrdersComponent,
+    FormMakeOrderComponent,
+    PageOrdersComponent
   ],
   imports: [
     BrowserModule,

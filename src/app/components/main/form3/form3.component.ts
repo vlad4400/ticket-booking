@@ -11,7 +11,7 @@ export class Form3Component implements OnInit {
 
   departure: string = this.activatedRoute.snapshot.params['departure'];
   arrives: string = this.activatedRoute.snapshot.params['arrives'];
-  data: string = this.activatedRoute.snapshot.params['data'];
+  date: string = this.activatedRoute.snapshot.params['date'];
   tickets = [...this.activatedRoute.snapshot.params['tickets'].split('-')];
 
 
@@ -118,7 +118,16 @@ export class Form3Component implements OnInit {
       let ticketsStr = this.tickets.join('-');
       let baggagesStr = baggages.join('-');
 
-      this.route.navigate([`/login/${this.departure}/${this.arrives}/${this.data}/${ticketsStr}/${baggagesStr}`]);
+      // this.route.navigate([`/login/${this.departure}/${this.arrives}/${this.date}/${ticketsStr}/${baggagesStr}`]);
+      this.route.navigate(['orders/make'], {
+        queryParams: {
+          departure: this.departure,
+          arrives: this.arrives,
+          date: this.date,
+          ticketsStr,
+          baggagesStr
+        }
+      });
     }
   }
 }

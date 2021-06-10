@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -42,7 +42,26 @@ export class FormLoginComponent implements OnInit {
 
     this.auth.login(this.form.value).subscribe(
       () => {
-        console.log('Login success');
+        let nextPage = this.route.snapshot.queryParams['nextPage'];
+
+        if (nextPage) {
+          let [ url, params ] = nextPage.split('?');
+          let objParams = {}
+
+          params.split('&').map((element: string) => {
+            let [key, value] = element.split('=');
+
+            Object.assign(objParams, {[key]: value});
+          });
+
+          this.router.navigate([`${url}`], {
+            queryParams: {
+              ...objParams
+            }
+          });
+        } else {
+          this.router.navigate(['/orders']);
+        }
       },
       err => {
         console.warn(err);

@@ -19,6 +19,7 @@ export class AuthService {
       .pipe(
         tap(({token})=>{
           localStorage.setItem('auth-token', token);
+
           this.setToken(token);
         }
       ));
@@ -37,7 +38,20 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return !!this.token;
+
+    if (this.token) {
+      let timeExp: number = JSON.parse(atob(this.token.split('.')[1])).exp * 1000;
+      let timeNow: number = new Date().getTime();
+
+      if (!(timeExp > timeNow)) {
+        this.logout();
+      }
+
+      return timeExp > timeNow;
+    } else {
+
+      return false;
+    }
   }
 
   logout() {
