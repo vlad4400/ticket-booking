@@ -1,1 +1,51 @@
-<p>form-make-order works!</p>
+<form class="form" (ngSubmit)="onSubmit()" [formGroup]="form">
+  <label [ngSwitch]="departure" class="element" for="arrives">
+    <div *ngSwitchCase="'lodz'" id="arrives">
+      Wylot: Lódź
+    </div>
+    <div *ngSwitchCase="'warsaw'" id="arrives">
+      Wylot: Warszawa
+    </div>
+    <div *ngSwitchDefault id="departure">
+      Wylot: <span color-error>Błąd</span>
+    </div>
+  </label>
+  <label [ngSwitch]="arrives" class="element" for="arrives">
+    <div *ngSwitchCase="'kiev'" id="arrives">
+      Przylot: Kijów
+    </div>
+    <div *ngSwitchCase="'krakow'" id="arrives">
+      Przylot: Kraków
+    </div>
+    <div *ngSwitchCase="'odessa'" id="arrives">
+      Przylot: Odessa
+    </div>
+    <div *ngSwitchDefault id="departure">
+      Przylot: <span color-error>Błąd</span>
+    </div>
+  </label>
+  <label class="element" for="inputDate">
+    Data odlotu: {{date}}
+  </label>
+  <fieldset *ngFor="let ticket of tickets; let i = index" class="element">
+    <header>Miejsce {{ticket}}</header>
+    <main class="element" id="bagaz-{{ticket}}">
+      <header class="little-text">Typ bagażu:</header>
+      <p class="little-text" [ngSwitch]="baggages[i]">
+        <span *ngSwitchCase="1">Tylko torebka ręczna (< 10kg)</span>
+        <span *ngSwitchCase="2">Średnia walizka (< 20kg)</span>
+        <span *ngSwitchCase="3">Duża walizka (< 32kg)</span>
+      </p>
+    </main>
+  </fieldset>
+  <label class="element" *ngIf="tickets.length">Liczba biletów: {{ tickets.length }}</label>
+  <label *ngIf="tickets.length" for="currencies" class="element">
+    Suma: {{ fullPrice }} PLN
+    <!-- <select (change)="onChangeCurr()" name="currencies" id="currencies">
+      <option *ngFor="let el of currencies, let i = index" value="{{i}}">{{el.code}}</option>
+    </select> -->
+  </label>
+  <button [disabled]="form.disabled" class="{{(tickets.length && !form.disabled) ? 'btn' : 'btn--inactive'}}">
+    {{tickets.length ? 'Kupić' : 'Jakiś błąd'}}
+  </button>
+</form>
