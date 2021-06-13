@@ -9,6 +9,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class BigMenuComponent implements OnInit {
 
+  isAuthenticated: boolean = this.auth.isAuthenticated();
+
   constructor(
     private auth: AuthService,
     private router: Router
