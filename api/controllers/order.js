@@ -4,8 +4,8 @@ const errorHandler = require('../utils/errorHandler');
 exports.getAll = async (req, res) => {
 
   const orders = await Order.find({ userId: req.user._id });
-  
-  if (orders) {
+
+  if (orders.length) {
     const ordersOnly = orders.map(({departure, arrives, date, ticketsStr, baggagesStr}) => {
       return {
         departure,
