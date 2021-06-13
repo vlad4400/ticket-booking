@@ -2,13 +2,20 @@
   Nie masz jeszcze zamówień
 </div>
 <div *ngIf="orders">
-  <div *ngFor="let order of orders">
-    <p>{{order.departure}}</p>
-    <p>{{order.arrives}}</p>
-    <p>{{order.date}}</p>
-    <p>{{order.ticketsStr}}</p>
-    <p>{{order.baggagesStr}}</p>
-    <hr>
+  <div class="order" *ngFor="let order of orders; let orderIdx = index">
+    <header>Zamówienie #{{orderIdx+1}}</header>
+    <p>Wylot {{order.departure}}</p>
+    <p>Przylot {{order.arrives}}</p>
+    <p>Data odlotu {{order.date}}</p>
+    <div class="little-text" *ngFor="let ticket of tickets[orderIdx]">
+      <header class="little-text">Mejsce {{ticket.placeNumber}}</header>
+      <p [ngSwitch]="ticket.baggageType">
+        Typ bagażu:
+        <span *ngSwitchCase="1">Tylko torebka ręczna (< 10kg)</span>
+        <span *ngSwitchCase="2">Średnia walizka (< 20kg)</span>
+        <span *ngSwitchCase="3">Duża walizka (< 32kg)</span>
+      </p>
+    </div>
   </div>
 </div>
 

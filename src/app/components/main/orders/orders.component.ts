@@ -9,7 +9,11 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class OrdersComponent implements OnInit {
 
-  orders!: Order[];
+  orders: Order[] = [];
+  tickets: {
+    placeNumber: String,
+    baggageType: String
+  }[][] = [];
 
   constructor(private orderService: OrderService) { }
 
@@ -17,6 +21,20 @@ export class OrdersComponent implements OnInit {
     this.orderService.getAll().subscribe(
       (data) => {
         this.orders = data.orders;
+
+        this.orders.forEach((order) => {
+          let tempTickets = order.ticketsStr.split('-');
+          let tempBaggages = order.baggagesStr.split('-');
+
+          let tempArray: {
+            placeNumber: String,
+            baggageType: String
+          }[] = [];
+          tempTickets.forEach((placeNumber: String, i: number) => {
+            tempArray.push({placeNumber, baggageType: tempBaggages[i]});
+          });
+          this.tickets.push(tempArray);
+        });
       },
       err => {
         console.warn(err);
