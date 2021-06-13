@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class FormRegistrComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -29,12 +30,35 @@ export class FormRegistrComponent implements OnInit {
 
     this.auth.register(this.form.value).subscribe(
       () => {
-        console.log('Register success');
-        this.router.navigate(['/login'], {
-          queryParams: {
-            registred: true
+
+        this.auth.login(this.form.value).subscribe(
+          () => {
+            let nextPage = this.route.snapshot.queryParams['nextPage'];
+
+            if (nextPage) {
+              let [ url, params ] = nextPage.split('?');
+              let objParams = {}
+
+              params.split('&').map((element: string) => {
+                let [key, value] = element.split('=');
+
+                Object.assign(objParams, {[key]: value});
+              });
+
+              this.router.navigate([`${url}`], {
+                queryParams: {
+                  ...objParams
+                }
+              });
+            } else {
+              this.router.navigate(['/orders']);
+            }
+          },
+          err => {
+            console.warn(err);
+            this.form.enable();
           }
-        });
+        );
       },
       err => {
         console.warn(err);

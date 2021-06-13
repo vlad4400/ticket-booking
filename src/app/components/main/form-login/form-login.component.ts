@@ -13,6 +13,7 @@ export class FormLoginComponent implements OnInit {
 
   form!: FormGroup;
   aSub!: Subscription;
+  queryParams: Params = this.route.snapshot.queryParams;
 
   constructor(
       private auth: AuthService,
