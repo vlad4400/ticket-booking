@@ -7,7 +7,10 @@
     <li routerLinkActive="active"><a class="menu__item" routerLink="ticket">Bilety</a></li>
     <li routerLinkActive="active"><a class="menu__item">Kontakt</a></li>
     <li routerLinkActive="active"><a class="menu__item">Informacje</a></li>
-    <li routerLinkActive="active"><a class="menu__item" routerLink="login">Logowanie</a></li>
+    <li routerLinkActive="active">
+      <a *ngIf="!isAuthenticated" class="menu__item" routerLink="login">Logowanie</a>
+      <a *ngIf="isAuthenticated" class="menu__item" routerLink="orders">Zamówienia</a>
+    </li>
     <li routerLinkActive="active"><a class="menu__item">Wybór języka</a></li>
     <li><a class="menu__item" (click)="OnClick()" [ngStyle]="{ cursor: 'pointer' }">Logout</a></li>
   </ul>
